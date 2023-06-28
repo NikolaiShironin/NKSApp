@@ -1,0 +1,16 @@
+private static NKSEntitie    _Context;
+        public NKSEntitie()
+            : base("name=NKSEntitie")
+        {
+        }
+
+        public static NKSEntitie GetContext()
+        {
+            if (_Context == null)
+                _Context = new NKSEntitie();
+            return _Context;
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }

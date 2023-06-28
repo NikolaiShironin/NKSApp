@@ -1,0 +1,149 @@
+﻿<Page x:Class="NKSApp.Pages.Requests"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NKSApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="820" d:DesignWidth="1800"
+      Title="Requests" Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0" Orientation="Horizontal">
+            <Image Source="/ResPhoto/loupe.png" Height="30" Margin="0,0,5,0"/>
+            <TextBox x:Name="TxtSearch" Width="200" Height="35" Background="#E1DBDB" FontSize="18" TextChanged="TxtSearch_TextChanged"/>
+            <Button Name="Reset"
+                   Click="Reset_Click"
+                   Width="28"
+                   Height="28"
+                   Margin="5,0,0,0"
+                   Style="{StaticResource BorderlessButton}">
+                <Image Source="\ResPhoto\undo.png" Stretch="Fill"></Image>
+            </Button>
+            <Button Name="BtnCreate" Click="BtnCreate_Click" Content="Создать запись" Foreground="Black" FontSize="18" Margin="15,0,0,0" Background="#E1DBDB" BorderThickness="0" Width="170"/>
+            <Button Name="BtnPrint" Click="BtnPrint_Click" Margin="15,0,0,0" Content="Печать" Foreground="Black" FontSize="18" Background="#51C24F" BorderThickness="0" Width="95"/>
+            <TextBlock Margin="10,0,0,0" Text="Готово: " FontSize="25"/>
+            <TextBlock x:Name="CountReady" Width="27" Height="35" FontSize="25"/>
+            <TextBlock Margin="5,0,0,0" Text="В работе: " FontSize="25"/>
+            <TextBlock x:Name="CountInWork" Width="27" Height="35" FontSize="25"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,65,0,0" Orientation="Horizontal">
+            <Image Source="/ResPhoto/Sheet.png" Height="30" Margin="0,0,5,0"/>
+            <ComboBox Name="CmbType"
+                      Height="35"
+                      Width="155"
+                      FontSize="18"
+                      SelectionChanged="CmbType_SelectionChanged"
+                      Text= "Тип"
+                      IsEditable="true"/>
+            <ComboBox Name="CmbSource"
+                      Height="35"
+                      Width="155"
+                      FontSize="18"
+                      Margin="15,0,0,0"
+                      SelectionChanged="CmbSource_SelectionChanged"
+                      Text= "Источник"
+                      IsEditable="true"/>
+            <ComboBox Name="CmbExecutor"
+                      Height="35"
+                      Width="155"
+                      FontSize="18"
+                      Margin="15,0,0,0"
+                      SelectionChanged="CmbExecutor_SelectionChanged"
+                      Text= "Исполнитель"
+                      IsEditable="true"/>
+            <TextBlock Text="C" FontSize="27"
+                       Margin="15,0,0,0"/>
+            <DatePicker x:Name="DPSince" FontSize="18" Height="35"
+                        Margin="15,0,0,0"
+                        Width="155"
+                        Foreground="#6737b8"
+                        AllowDrop="True"
+                        SelectedDateFormat="Short"
+                        DisplayDate="2023-06-01"
+                        SelectedDate="{Binding Path=DateStart,StringFormat='MM/dd/yyy'}"/>
+            <TextBlock Text="До" FontSize="27"
+                       Margin="15,0,0,0"/>
+            <DatePicker x:Name="DPTo" FontSize="18" Height="35"
+                        Margin="15,0,0,0"
+                        Width="155"
+                        Foreground="#6737b8"
+                        AllowDrop="True"
+                        SelectedDateFormat="Short"
+                        DisplayDate="2023-06-01"
+                        SelectedDate="{Binding Path=DateStart,StringFormat='MM/dd/yyy'}">
+            </DatePicker>
+            <Button Name="Show" Click="Show_Click"  Content="Показать" Foreground="Black" FontSize="18" Margin="15,0,0,0" Background="#6ACAE8" BorderThickness="0" Width="170"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="15,15,0,0">
+        <DataGrid ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}"
+                  RowStyle="{DynamicResource DataGridRowStyle}"
+                  x:Name="DGridOrders"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  HorizontalAlignment="Left"
+                  Width="1304">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                        Header="№" Width="40" 
+                        Binding="{Binding RequestID}"/>
+                <DataGridTextColumn
+                        Header="Время создания" Width="160"
+                        Binding="{Binding DateStart, StringFormat='dd/MM/yyy  HH:mm'}"/>
+                <DataGridTextColumn
+                        Header="Содержание" Width="125"
+                        Binding="{Binding ContentN}"/>
+                <DataGridTextColumn
+                        Header="Тип" Width="100" 
+                        Binding="{Binding Type.NType}"/>
+                <DataGridTextColumn
+                        Header="Источник" Width="130"
+                        Binding="{Binding Source.NSource}"/>
+                <DataGridTextColumn
+                        Header="Заявитель" Width="155"
+                        Binding="{Binding Applicant}"/>
+                <DataGridTextColumn
+                        Header="Исполнитель" Width="155"
+                        Binding="{Binding Executor.NExecutor}"/>
+                <DataGridTextColumn
+                        Header="Адрес" Width="143" 
+                        Binding="{Binding Adress}"/>
+                <DataGridTextColumn
+                        Header="Удобное время" Width="110"
+                        Binding="{Binding СonvenientTime}"/>
+                <DataGridTextColumn
+                        Header="Статус" Width="85"
+                        Binding="{Binding Status.NStatus}"/>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Center">
+                                <Button Name="BtnView"
+                                    Click="BtnView_Click"
+                                    Width="30"
+                                    Height="30"
+                                        Margin="0,-4,0,0"
+                                    Style="{StaticResource BorderlessButton}">
+                                    <Image Source="\ResPhoto\eye.png" Stretch="Fill"></Image>
+                                </Button>
+                                    <Button Name="BtnDeleterRequest"
+                                    Click="BtnDeleterRequest_Click"
+                                    Width="28"
+                                    Height="28"
+                                        Margin="7,-4,0,0"
+                                    Style="{StaticResource BorderlessButton}">
+                                        <Image Source="\ResPhoto\Buck.png" Stretch="Fill"></Image>
+                                </Button>
+                                </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

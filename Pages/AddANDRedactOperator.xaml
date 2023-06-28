@@ -1,0 +1,52 @@
+﻿<Page x:Class="NKSApp.Pages.AddANDRedactOperator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NKSApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="820" d:DesignWidth="1800"
+      Background="White"
+      Title="AddANDRedactOperator">
+
+    <Grid>
+        <Border Height="650" Width="1000" CornerRadius="30" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Редактирование Оператора" FontSize="30" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <TextBlock Text="Введите оператора" Height="35" FontSize="20"/>
+                    <TextBlock Text="Введите номер телефона" Height="35" FontSize="20"/>
+                    <TextBlock Text="Введите электронную почту" Height="35" FontSize="20"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox Name="TxtNOperator"
+                 Text="{Binding NOperator}" FontSize="20" Height="35"/>
+                    <TextBox Name="TxtPhoneNumber"
+                 Text="{Binding PhoneNumber}" FontSize="20" Height="35"/>
+                    <TextBox Name="TxtEmail"
+                 Text="{Binding Email}" FontSize="20" Height="35"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Button Content="Сохранить"
+                            Background="#E1DBDB"
+                            Foreground="Black"
+                            BorderBrush="#E1DBDB"
+                            FontSize="18"
+                            Width="150"
+                            Height="30"
+                            Name="BtnSaveOperator"
+                            Click="BtnSaveOperator_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

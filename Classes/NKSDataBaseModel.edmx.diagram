@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6187b77e91ad480fb41c215f22193232" Name="Diagram1">
+        <EntityTypeShape EntityType="NKSModel.Executor" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Operator" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Plan" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Request" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Shutdown" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Source" Width="1.5" PointX="3.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Status" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NKSModel.Type" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="NKSModel.FK_Plan_Executor" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Request_Executor" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Shutdown_Operator" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Plan_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Plan_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Request_Source" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Request_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Request_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Shutdown_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="NKSModel.FK_Shutdown_Type" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

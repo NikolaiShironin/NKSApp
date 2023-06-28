@@ -1,0 +1,81 @@
+﻿<Page x:Class="NKSApp.Pages.AddANDRedactRequest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NKSApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="820" d:DesignWidth="1800"
+      Background="White"
+      Title="AddANDRedactRequest">
+
+    <Grid>
+        <Border Height="650" Width="900" CornerRadius="30" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Создание Заявки" FontSize="30" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                    <TextBlock Text="Время создания" Height="35" FontSize="20"/>
+                    <TextBlock Text="" Height="35" FontSize="20"/>
+                    <TextBlock Text="Статус" Height="35" FontSize="20"/>
+                    <TextBlock Text="Тип" Height="35" FontSize="20"/>
+                    <TextBlock Text="Содержание" Height="35" FontSize="20"/>
+                    <TextBlock Text="Источник" Height="35" FontSize="20"/>
+                    <TextBlock Text="Заявитель" Height="35" FontSize="20"/>
+                    <TextBlock Text="Исполнитель" Height="35" FontSize="20"/>
+                    <TextBlock Text="Адрес" Height="35" FontSize="20"/>
+                    <TextBlock Text="Удобное время" Height="35" FontSize="20"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                    <TextBox Name="TxtDateStart"
+                 Text="{Binding DateStart}" FontSize="20" Height="35"/>
+                    <DatePicker x:Name="DP1" FontSize="20" Height="35"
+                                Foreground="#6737b8"
+                                AllowDrop="True"
+                                SelectedDateFormat="Short"
+                                DisplayDate="2023-06-01"
+                                SelectedDateChanged="DP1_SelectedDateChanged">
+                    </DatePicker>
+                    <ComboBox x:Name="cboTP" FontSize="20" Visibility="Collapsed">
+                        <ComboBoxItem>10:00</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Name="CmbNStatus"
+                 SelectedValue="{Binding StatusID}" FontSize="20" Height="35"/>
+                    <ComboBox Name="CmbNType"
+                 SelectedValue="{Binding TypeID}" FontSize="20" Height="35"/>
+                    <TextBox Name="TxtContentN"
+                 Text="{Binding ContentN}" FontSize="20" Height="35"/>
+                    <ComboBox Name="CmbNSource"
+                 SelectedValue="{Binding SourceID}" FontSize="20" Height="35"/>
+                    <TextBox Name="TxtApplicant"
+                 Text="{Binding Applicant}" FontSize="20" Height="35"/>
+                    <ComboBox Name="CmbNExecutor"
+                 SelectedValue="{Binding ExecutorID}" FontSize="20" Height="35"/>
+                    <TextBox Name="TxtAdress"
+                 Text="{Binding Adress}" FontSize="20" Height="35"/>
+                    <TextBox Name="TxtСonvenientTime"
+                 Text="{Binding СonvenientTime}" FontSize="20" Height="35"/>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Button Content="Сохранить"
+                            Background="#E1DBDB"
+                            Foreground="Black"
+                            BorderBrush="#E1DBDB"
+                            FontSize="18"
+                            Width="150"
+                            Height="30"
+                            Name="BtnSaveRequest"
+                            Click="BtnSaveRequest_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
